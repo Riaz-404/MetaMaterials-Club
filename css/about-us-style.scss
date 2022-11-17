@@ -1,0 +1,655 @@
+$primary-color : #707070;
+$secondary-color : #27BAFE;
+
+@use 'media-queries.scss' as *;
+
+@font-face {
+    font-family: NeoSans_medium_italic;
+    src: url(/fonts/NeoSans_Medium_Italic.otf);
+}
+
+@font-face {
+    font-family: NeoSans_medium_regular;
+    src: url(/fonts/Neo_Sans_Std_Regular.otf);
+}
+
+@font-face {
+    font-family: NeoSans_medium_bold;
+    src: url(/fonts/Neo_Sans_Std_Bold.otf);
+}
+
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(25, 54, 82, 0.2);
+
+    @include xs{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    @include xxs{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .logo{
+        padding-left: 100px;
+
+        @include sm {
+            padding-left: 60px;
+        }
+        @include xs{
+            padding-left: 10px;
+        }
+        @include xxs{
+            padding-left: 10px;
+        }
+
+        a{
+            embed{
+                height: 65px;
+                width: 65px;
+                @include sm {
+                    height: 45px;
+                    width: 45px;
+                }
+                @include xs {
+                    height: 40px;
+                    width: 40px;
+                }
+                @include xxs {
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+        }
+    }
+
+    .xs-active{
+        display: flex;
+    }
+
+    #navbar{
+        @include xs{
+            display: none;
+            width: 100%;
+            padding-right: 0;
+            z-index: 100;
+        }
+        @include xxs{
+            display: none;
+            width: 100%;
+            padding-right: 0;
+            z-index: 100;
+        }
+    }
+
+    nav{
+        padding-right: 100px;
+        
+        @include sm {
+            padding-right: 50px;
+        }
+        
+        ul{
+            margin:0;
+            padding:0;
+            align-items: center;
+            list-style: none;
+            @include xs{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+            }
+            @include xxs{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+            }
+            li{
+                display: inline-block;
+                @include xs{
+                    width: 100%;
+                    text-align: center;
+                }
+                @include xxs{
+                    width: 100%;
+                    text-align: center;
+                }
+                a{
+                    align-items: center;
+                    display: inline-block;
+                    padding: 15px 20px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1.25em;
+                    @include md {
+                        font-size:  1em;
+                    }
+                    @include sm {
+                        font-size:  0.75em;
+                    }
+                    @include xs{
+                        padding: .5rem 1rem;
+                    }
+                    @include xxs{
+                        padding: .5rem 1rem;
+                    }
+                    text-decoration: none;
+                    color: $primary-color;
+                }
+                :hover{
+                    font-style: italic;
+                    color: $secondary-color;
+                }
+                &.active{
+                    a{
+                        font-weight: bold;
+                    }
+                }
+                
+            }
+        }
+    }
+
+    /*--====== Sidebar ======--*/
+    #sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 999;
+        max-width: 300px;
+        width: 80%;
+        height: 100%;
+        padding: 1rem;
+        background-color: #f6f8fa;
+        box-shadow: 0 10px 20px -4px #000;
+        overflow-x: hidden;
+        overflow-y: auto;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: opacity 0.3s ease, visibility 0.2s ease, transform 0.3s ease;
+    }
+
+    /* when the sidebar has 'show' class */
+    #sidebar.show {
+        pointer-events: all;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .sidebar_content {
+        padding: 2.8rem 0;
+        pointer-events: none;
+        /* so that the Sidebar does not get closed while clicking on sidebar_content */
+    }
+
+    .sidebar_content a {
+        pointer-events: all;
+        /* so that all the <a> inside sidebar_content are clickable */
+    }
+
+
+    .side_navlinks ul {
+        display: grid;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+    }
+
+    .side_navlinks li a {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.25em;
+    }
+
+    .side_navlinks a:hover {
+        opacity: 1;
+    }
+
+    /*---- Sidebar-Toggler ----*/
+    .sidebar_toggler {
+        display: none;
+        position: fixed;
+        top: 1.75vh;
+        right: 3vw;
+        z-index: 9999;
+        width: 1.75rem;
+        height: 1.3rem;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        overflow: hidden;
+
+        @include xs{
+            display: flex;
+        }
+        @include xxs{
+            display: flex;
+        }
+    }
+
+    .sidebar_toggler span {
+        background-color: #28292f;
+        width: 100%;
+        height: 2.4px;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        /* so that it doesn't overlap the sidebar_toggler */
+    }
+
+    /* if the sidebar has 'show' class then their adjacent-sibling (i.e., sidebar_toggler) will... */
+    #sidebar.show + .sidebar_toggler {
+        justify-content: center;
+    }
+
+    #sidebar.show + .sidebar_toggler span {
+        margin-top: -1.2px;
+        margin-bottom: -1.2px;
+    }
+
+    #sidebar.show + .sidebar_toggler span:first-child {
+        transform: rotate(45deg);
+    }
+
+    #sidebar.show + .sidebar_toggler span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    #sidebar.show + .sidebar_toggler span:last-child {
+        transform: rotate(-45deg);
+    }
+}
+
+main{
+    .timeline{
+        width: 90%;
+        height: auto;
+        position: relative;
+        
+        @include gt-xs{
+            margin: 0 30px;
+        }
+
+        ul{
+            list-style: none;
+
+            li::before {
+                @include gt-xs{
+                    content: "";
+                    position: absolute;
+                    height: 15px;
+                    width: 15px;
+                    border-radius: 50%;
+                    background-color: #11293D;
+                    transform: translate(-50%, 200%);
+                    left: 0;
+                }
+                
+            }
+            li:hover:before {
+                @include gt-xs{
+                    background-color: #27BAFE;
+                }
+                
+            }
+
+        }
+        .timeline-content{
+            margin-top: 20px;
+            h1{
+                padding-top: 20px;
+                text-transform: uppercase;
+                font-size: 40px;
+                font-family: NeoSans_medium_italic;
+                color: #193652;
+                .change-color{
+                    color: $secondary-color;
+                }
+                @include md {
+                    font-size: 35px;
+                }
+                @include sm {
+                    font-size:  28px;
+                }
+                @include xs {
+                    font-size:  24px;
+                }
+                @include xxs {
+                    font-size:  20px;
+                }
+            }
+            p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                padding-top: 10px;
+                text-align: justify;
+                color: #5A5A5A;
+                @include md {
+                    font-size: 1em;
+                }
+                @include sm {
+                    font-size:  0.75em;
+                }
+                @include xs {
+                    font-size:  0.75em;
+                }
+                @include xxs {
+                    font-size:  0.75em;
+                }
+            }
+        }
+        
+
+        
+    }
+
+    .timeline::before{
+        @include gt-xs{
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 1;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 98%;
+            background-color: #11293D;
+        }
+        
+    }
+
+    .member-section{
+        margin-top: 75px;
+        margin-bottom: 10px;
+        padding: 0 20px;
+
+        .member-section-title{
+            display: flex;
+            justify-content: center;
+            h1{
+                padding: 20px;
+                text-transform: uppercase;
+                font-size: 40px;
+                font-family: NeoSans_medium_italic;
+                color: #193652;
+                .change-color{
+                    color: $secondary-color;
+                }
+                @include md {
+                    font-size: 35px;
+                }
+                @include sm {
+                    font-size:  28px;
+                }
+                @include xs {
+                    font-size:  24px;
+                }
+                @include xxs {
+                    font-size:  20px;
+                }
+            }
+        }
+
+        .member-section-body{
+            .member-one, .member-two{
+                @include gt-md {
+                    padding: 20px 150px;
+                }
+                @include md {
+                    padding: 20px 100px;
+                }
+                @include sm {
+                    padding: 20px 25px;
+                }
+            }
+
+            .member-three, .member-four{
+                padding: 20px 0;
+            }
+
+            .img-odd{
+                height: 300px;
+                border-radius: 60px 0 60px 0;
+                @include md {
+                    height: 250px;
+                    border-radius: 55px 0 55px 0;
+                }
+                @include sm {
+                    height: 180px;
+                    border-radius: 40px 0 40px 0;
+                }
+                @include lt-sm{
+                    margin-top: 20px;
+                    height: 260px;
+                    border-radius: 50px 0 50px 0;
+                }
+            }
+
+            .img-even{
+                height: 300px;
+                border-radius: 0 60px 0 60px;
+                @include md {
+                    height: 250px;
+                    border-radius: 0 55px 0 55px;
+                }
+                @include sm {
+                    height: 180px;
+                    border-radius: 0 40px 0 40px;
+                }
+                @include lt-sm {
+                    margin-top: 20px;
+                    height: 260px;
+                    border-radius: 0 50px 0 50px;
+                }
+            }
+
+            h1{
+                padding-top: 20px;
+                margin-bottom: 2px;
+                text-transform: uppercase;
+                font-size: 28px;
+                font-family: NeoSans_medium_bold;
+                color: #193652;
+                .change-color{
+                    color: $secondary-color;
+                }
+                @include md {
+                    font-size: 26px;
+                }
+                @include sm {
+                    font-size:  24px;
+                }
+                @include xs {
+                    font-size:  22px;
+                }
+                @include xxs {
+                    font-size:  20px;
+                }
+            }
+            p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 16px;
+                margin-bottom: 0px;
+                text-align: center;
+                color: #5A5A5A;
+                @include md {
+                    font-size: 0.75em;
+                }
+                @include sm {
+                    font-size:  0.75em;
+                }
+                @include xs {
+                    font-size:  0.75em;
+                }
+                @include xxs {
+                    font-size:  0.68em;
+                }
+            }
+            h3{
+                text-transform: uppercase;
+                font-size: 22px;
+                margin-top: 10px;
+                font-family: NeoSans_medium_italic;
+                color: $secondary-color;
+                .change-color{
+                    color: $secondary-color;
+                }
+                @include md {
+                    font-size: 20px;
+                    margin-top: 9px;
+                }
+                @include sm {
+                    font-size:  18px;
+                    margin-top: 8px;
+                }
+                @include xs {
+                    font-size:  16px;
+                    margin-top: 7px;
+                }
+                @include xxs {
+                    font-size:  16px;
+                    margin-top: 7px;
+                }
+            }
+        }
+        
+        
+    }
+
+          
+}
+
+
+footer{
+    background-image: linear-gradient(#21517A, #11293D);
+    min-height: 300px;
+    padding-top: 40px;
+
+    @include md {
+        min-height: 250px;
+        padding-top: 30px;
+    }
+
+    @include sm{
+        min-height: 200px;
+        padding-top: 20px;
+    }
+    @include xs {
+        min-height: 150px;
+        padding-top: 15px;
+    }
+    @include xxs {
+        min-height: 150px;
+        padding-top: 15px;
+    }
+    
+    .footer-main{
+        p{
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            text-transform: uppercase;
+            font-size: 40px;
+            font-family: NeoSans_medium_italic;
+            color: white;
+            @include md {
+                font-size: 35px;
+            }
+            @include sm {
+                font-size:  28px;
+            }
+            @include xs {
+                font-size:  24px;
+            }
+            @include xxs {
+                font-size:  20px;
+            }
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            a{
+                height: 74px;
+                width: 74px;
+                padding: 10px;
+
+                @include md {
+                    height: 56px;
+                    width: 56px;
+                }
+
+                @include sm {
+                    height: 46px;
+                    width: 46px;
+                }
+                @include xs {
+                    height: 28px;
+                    width: 28px;
+                }
+
+                @include xxs {
+                    height: 28px;
+                    width: 28px;
+                }
+
+                img{
+                    height: 56px;
+                    width: 56px;
+                    @include md {
+                        height: 46px;
+                        width: 46px;
+                    }
+
+                    @include sm {
+                        height: 38px;
+                        width: 38px;
+                    }
+
+                    @include xs {
+                        height: 28px;
+                        width: 28px;
+                    }
+
+                    @include xxs {
+                        height: 28px;
+                        width: 28px;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-bottom{
+        color: white;
+        margin-top: 50px;
+        line-height: 50%;
+        @include md {
+            font-size: 0.75em;
+        }
+        @include sm{
+            font-size: 0.6em;
+        }
+        @include xs {
+            line-height: 10%;
+            font-size: 0.6em;
+        }
+
+        @include xxs {
+            line-height: 10%;
+            font-size: 0.6em;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}

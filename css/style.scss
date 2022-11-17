@@ -1,0 +1,947 @@
+$primary-color : #707070;
+$secondary-color : #27BAFE;
+
+@use 'media-queries.scss' as *;
+
+@font-face {
+    font-family: NeoSans_medium_italic;
+    src: url(/fonts/NeoSans_Medium_Italic.otf);
+}
+
+@font-face {
+    font-family: NeoSans_medium_regular;
+    src: url(/fonts/Neo_Sans_Std_Regular.otf);
+}
+
+@font-face {
+    font-family: NeoSans_medium_bold;
+    src: url(/fonts/Neo_Sans_Std_Bold.otf);
+}
+
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(25, 54, 82, 0.2);
+
+    @include xs{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    @include xxs{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .logo{
+        padding-left: 100px;
+
+        @include sm {
+            padding-left: 60px;
+        }
+        @include xs{
+            padding-left: 10px;
+        }
+        @include xxs{
+            padding-left: 10px;
+        }
+
+        a{
+            embed{
+                height: 65px;
+                width: 65px;
+                @include sm {
+                    height: 45px;
+                    width: 45px;
+                }
+                @include xs {
+                    height: 40px;
+                    width: 40px;
+                }
+                @include xxs {
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+        }
+    }
+
+    .xs-active{
+        display: flex;
+    }
+
+    #navbar{
+        @include xs{
+            display: none;
+            width: 100%;
+            padding-right: 0;
+            z-index: 100;
+        }
+        @include xxs{
+            display: none;
+            width: 100%;
+            padding-right: 0;
+            z-index: 100;
+        }
+    }
+
+    nav{
+        padding-right: 100px;
+        
+        @include sm {
+            padding-right: 50px;
+        }
+        
+        ul{
+            margin:0;
+            padding:0;
+            align-items: center;
+            list-style: none;
+            @include xs{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+            }
+            @include xxs{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+            }
+            li{
+                display: inline-block;
+                @include xs{
+                    width: 100%;
+                    text-align: center;
+                }
+                @include xxs{
+                    width: 100%;
+                    text-align: center;
+                }
+                a{
+                    align-items: center;
+                    display: inline-block;
+                    padding: 15px 20px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1.25em;
+                    @include md {
+                        font-size:  1em;
+                    }
+                    @include sm {
+                        font-size:  0.75em;
+                    }
+                    @include xs{
+                        padding: .5rem 1rem;
+                    }
+                    @include xxs{
+                        padding: .5rem 1rem;
+                    }
+                    text-decoration: none;
+                    color: $primary-color;
+                }
+                :hover{
+                    font-style: italic;
+                    color: $secondary-color;
+                }
+                &.active{
+                    a{
+                        font-weight: bold;
+                    }
+                }
+                
+            }
+        }
+    }
+
+    /*--====== Sidebar ======--*/
+    #sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 999;
+        max-width: 300px;
+        width: 80%;
+        height: 100%;
+        padding: 1rem;
+        background-color: #f6f8fa;
+        box-shadow: 0 10px 20px -4px #000;
+        overflow-x: hidden;
+        overflow-y: auto;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: opacity 0.3s ease, visibility 0.2s ease, transform 0.3s ease;
+    }
+
+    /* when the sidebar has 'show' class */
+    #sidebar.show {
+        pointer-events: all;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .sidebar_content {
+        padding: 2.8rem 0;
+        pointer-events: none;
+        /* so that the Sidebar does not get closed while clicking on sidebar_content */
+    }
+
+    .sidebar_content a {
+        pointer-events: all;
+        /* so that all the <a> inside sidebar_content are clickable */
+    }
+
+
+    .side_navlinks ul {
+        display: grid;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+    }
+
+    .side_navlinks li a {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.25em;
+    }
+
+    .side_navlinks a:hover {
+        opacity: 1;
+    }
+
+    /*---- Sidebar-Toggler ----*/
+    .sidebar_toggler {
+        display: none;
+        position: fixed;
+        top: 1.75vh;
+        right: 3vw;
+        z-index: 9999;
+        width: 1.75rem;
+        height: 1.3rem;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        overflow: hidden;
+
+        @include xs{
+            display: flex;
+        }
+        @include xxs{
+            display: flex;
+        }
+    }
+
+    .sidebar_toggler span {
+        background-color: #28292f;
+        width: 100%;
+        height: 2.4px;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        /* so that it doesn't overlap the sidebar_toggler */
+    }
+
+    /* if the sidebar has 'show' class then their adjacent-sibling (i.e., sidebar_toggler) will... */
+    #sidebar.show + .sidebar_toggler {
+        justify-content: center;
+    }
+
+    #sidebar.show + .sidebar_toggler span {
+        margin-top: -1.2px;
+        margin-bottom: -1.2px;
+    }
+
+    #sidebar.show + .sidebar_toggler span:first-child {
+        transform: rotate(45deg);
+    }
+
+    #sidebar.show + .sidebar_toggler span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    #sidebar.show + .sidebar_toggler span:last-child {
+        transform: rotate(-45deg);
+    }
+}
+
+main{
+    .banner-section{
+        margin-top: 20px;
+        .banner-image{
+            padding-right: 50px;
+            img{
+                width: 85%;
+                @include md {
+                    width: 90%;
+                }
+                @include sm {
+                    width: 95%;
+                }
+                @include xs{
+                    display: none;
+                }
+                @include xxs{
+                    display: none;
+                }
+            }
+        }
+        .banner-title{
+            padding-left: 20px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-style: italic;
+
+            embed{
+                height: 250px;
+                @include md {
+                    height: 180px;
+                }
+                @include sm {
+                    height:  140px;
+                }
+                @include xs{
+                    height: 140px;
+                }
+                @include xxs{
+                    height: 120px;
+                }
+            }
+            h1{
+                padding-top: 20px;
+                text-transform: uppercase;
+                font-size:  4.5em;
+                line-height: 90%;
+                font-family: NeoSans_medium_italic;
+                color: #5A5A5A;
+                .change-color{
+                    color: $secondary-color;
+                }
+                @include md {
+                    font-size:  3em;
+                }
+                @include sm {
+                    font-size:  2em;
+                }
+                @include xs {
+                    font-size:  2.5em;
+                    line-height: 100%;
+                }
+                @include xxs{
+                    font-size: 2em;
+                    line-height: 100%;
+                }
+            }
+            h3{
+                color: #136A92;
+                @include md {
+                    font-size: 1.25em;
+                }
+                @include sm {
+                    font-size:  1em;
+                }
+                @include xs {
+                    font-size:  1em;
+                }
+                @include xxs {
+                    font-size:  1em;
+                }
+            }
+            .button{
+                margin-top: 10px;
+                font-family: 'Montserrat', sans-serif;
+                background-color: $secondary-color;
+                color: white;
+                border: none;
+                border-radius: 1.5em;
+                font-size: 20px;
+                padding: 5px 40px;
+                @include md {
+                    font-size: 1em;
+                }
+                @include sm {
+                    font-size:  0.75em;
+                }
+                @include xs {
+                    font-size:  0.75em;
+                }
+                @include xxs {
+                    font-size:  0.75em;
+                }
+            }
+            .button:hover{
+                font-weight: bold;
+            }
+        }
+    }
+
+    .why-join-section{
+        margin-top: 100px;
+        margin-bottom: 50px;
+        padding: 20px;
+
+        @include sm {
+            margin-top: 50px;
+            margin-bottom: 35px;
+        }
+
+        .why-join-section-text{
+            h1{
+                padding-top: 20px;
+                text-transform: uppercase;
+                font-size: 40px;
+                font-family: NeoSans_medium_italic;
+                color: #193652;
+                .change-color{
+                    color: $secondary-color;
+                }
+                @include md {
+                    font-size: 35px;
+                }
+                @include sm {
+                    font-size:  28px;
+                }
+                @include xs {
+                    font-size:  24px;
+                }
+                @include xxs {
+                    font-size:  20px;
+                }
+            }
+            p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                text-align: justify;
+                color: #5A5A5A;
+                @include md {
+                    font-size: 1em;
+                }
+                @include sm {
+                    font-size:  0.75em;
+                }
+                @include xs {
+                    font-size:  0.75em;
+                }
+                @include xxs {
+                    font-size:  0.75em;
+                }
+            }
+        }
+
+        .why-join-section-image{
+            display: flex;
+            justify-content: right;
+            img{
+                width: 80%;
+                height: 80%;
+                content:url("/images/Mask Group-3@2x.png");
+                @include xs {
+                    width: 100%;
+                    height: 100%;
+                    content:url("/images/Image-3.jpg");
+                }
+                @include xxs {
+                    font-size:  0.75em;
+                    width: 100%;
+                    height: 100%;
+                    content:url("/images/Image-3.jpg");
+                }
+            }
+            
+            
+        }
+    }
+
+    .what-offer-section{
+        margin-top: 100px;
+        margin-bottom: 50px;
+        padding: 20px;
+
+        @include sm {
+            margin-top: 0px;
+            margin-bottom: 35px;
+        }
+
+        @include xs {
+            margin-top: 0px;
+            margin-bottom: 30px;
+        }
+        
+        @include xxs {
+            margin-top: 0px;
+            margin-bottom: 25px;
+        }
+
+        .what-offer-section-text{
+            @include xs {
+                order: 1;
+            }
+            @include xxs {
+                order: 1;
+            }
+            h1{
+                padding-top: 20px;
+                text-transform: uppercase;
+                font-size: 40px;
+                font-family: NeoSans_medium_italic;
+                color: #193652;
+                .change-color{
+                    color: $secondary-color;
+                }
+                @include md {
+                    font-size: 35px;
+                }
+                @include sm {
+                    font-size:  28px;
+                }
+                @include xs {
+                    order: 1;
+                    font-size:  24px;
+                }
+                @include xxs {
+                    font-size:  20px;
+                }
+            }
+            p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                text-align: justify;
+                color: #5A5A5A;
+                @include md {
+                    font-size: 1em;
+                }
+                @include sm {
+                    font-size:  0.75em;
+                }
+                @include xs {
+                    order: 3;
+                    font-size:  0.75em;
+                }
+                @include xxs {
+                    font-size:  0.75em;
+                }
+            }
+        }
+
+        .what-offer-section-image{
+            display: flex;
+            justify-content: left;
+            @include xs {
+                order: 2;
+            }
+            @include xxs {
+                order: 2;
+            }
+            img{
+                width: 80%;
+                height: 80%;
+                
+            }
+
+            
+        }
+    }
+    
+    .gallery-carousel{
+        margin-top: 100px;
+        margin-bottom: 20px;
+        padding: 20px 20px 30px 20px;
+
+        @include sm {
+            margin-top: 0px;
+            margin-bottom: 35px;
+        }
+
+        @include xs {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 0px 5px 15px 5px;
+        }
+
+        @include xxs {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 0px 5px 15px 5px;
+        }
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-color: #123451;
+
+        .carousel-title{
+            h1{
+                padding-top: 20px;
+                text-transform: uppercase;
+                font-size: 40px;
+                font-family: NeoSans_medium_italic;
+                color: white;
+                @include md {
+                    font-size: 35px;
+                }
+                @include sm {
+                    font-size:  28px;
+                }
+                @include xs {
+                    font-size:  24px;
+                }
+                @include xxs {
+                    font-size:  20px;
+                }
+            }
+        }
+
+        .carousel-slide{
+            margin-top: 20px;
+            height: 70%;
+            width: 70%;
+
+            @include sm {
+                margin-top: 0px;
+                height: 80%;
+                width: 80%;
+            }
+            @include xs {
+                margin-top: 0px;
+                height: 100%;
+                width: 90%;
+            }
+            @include xxs {
+                margin-top: 0px;
+                height: 100%;
+                width: 90%;
+            }
+
+            .carousel-indicators{
+                @include xs {
+                    margin: 0;
+                }
+                @include xxs {
+                    margin: 0;
+                }
+            }
+
+            .carousel-inner{
+                .carousel-caption{
+                    color: white;
+                    font-size: 20px;
+                    font-weight: bolder;
+                    margin: 0;
+                    padding: 0;
+                    p{
+                        background-color: rgba(25, 54, 82, 0.5);
+                        @include xs {
+                            font-size:  0.75em;
+                            margin: 0;
+                            padding: 0;
+                        }
+                        @include xxs {
+                            font-size:  0.75em;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+                    @include md {
+                        font-size: 1em;
+                    }
+                    @include sm {
+                        font-size:  0.75em;
+                    }
+                    @include xs {
+                        font-size:  0.75em;
+                    }
+                    @include xxs {
+                        font-size:  0.75em;
+                    }
+                }
+            }
+        }
+
+        .carousel-bottom{
+            a{
+                color: $primary-color;
+                text-decoration: none;
+                font-family: NeoSans_medium_regular;
+                font-size: 20px;
+                @include md {
+                    font-size: 16px;
+                }
+                @include sm {
+                    font-size:  12px;
+                }
+                @include xs {
+                    font-size:  0.75em;
+                }
+                @include xxs {
+                    font-size:  0.75em;
+                }
+            }
+            :hover{
+                color: #b2b2b2;
+            }
+        }
+    }
+
+    .get-in-touch{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding: 20px;
+
+        @include sm {
+            margin-top: 0px;
+            margin-bottom: 35px;
+        }
+        @include xs {
+            margin-top: 0px;
+            margin-bottom: 35px;
+        }
+        @include xxs {
+            margin-top: 0px;
+            margin-bottom: 35px;
+        }
+
+        .get-touch {
+            p{
+                display: flex;
+                justify-content: center;
+                padding-top: 20px;
+                text-transform: uppercase;
+                font-size: 40px;
+                font-family: NeoSans_medium_italic;
+                color: #193652;
+                @include md {
+                    font-size: 35px;
+                }
+                @include sm {
+                    font-size:  28px;
+                }
+                @include xs {
+                    font-size:  24px;
+                }
+                @include xxs {
+                    font-size:  20px;
+                }
+            }
+
+            .get-in-touch-main {
+                max-width: 600px;
+                margin-right: auto;
+                margin-left: auto;
+
+                @include sm {
+                    max-width: 450px;
+                }
+                @include xs {
+                    max-width: 350px;
+                }
+                @include xxs {
+                    max-width: 300px;
+                }
+
+                .get-in-touch-form {
+                    form {
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        font-size: 1.2em;
+                        margin: 2px 0 1em 0;
+                        
+                        @include md {
+                            font-size: 1em;
+                        }
+                        @include sm {
+                            font-size:  0.75em;
+                        }
+                        @include xs {
+                            font-size:  0.75em;
+                        }
+                        @include xxs {
+                            font-size:  0.75em;
+                        }
+                        
+                        label {
+                            padding: 10px 0 5px 0;
+                            font-weight: 400;
+                            line-height: 1.45em;
+                            font-family: NeoSans_medium_regular;
+                            color: #666260;
+                            @include md {
+                                line-height: 1.25em;
+                            }
+                            @include sm {
+                                line-height: 1em;
+                            }
+                        }
+
+                        input, textarea {
+                            background: #f3f4f6;
+                            border-radius: 4px;
+                            border: #193652;
+                            box-sizing: border-box;
+                            color: #111;
+                            width: 100%;
+                            padding: 10px 0;
+                        }
+                        button {
+                            margin-top: 20px;
+                            font-family: NeoSans_medium_regular;
+                            background-color: $secondary-color;
+                            color: white;
+                            border: none;
+                            border-radius: 1.5em;
+                            font-size: 20px;
+                            padding: 5px 40px;
+                            @include md {
+                                font-size: 1em;
+                            }@include sm {
+                                font-size: 1em;
+                            }
+                            @include xs {
+                                font-size:  1em;
+                            }
+                            @include xxs {
+                                font-size:  1em;
+                            }
+                        }
+                        button:hover{
+                            background-color: #27bafeb5;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+footer{
+    background-image: linear-gradient(#21517A, #11293D);
+    min-height: 300px;
+    padding-top: 40px;
+
+    @include md {
+        min-height: 250px;
+        padding-top: 30px;
+    }
+
+    @include sm{
+        min-height: 200px;
+        padding-top: 20px;
+    }
+    @include xs {
+        min-height: 150px;
+        padding-top: 15px;
+    }
+    @include xxs {
+        min-height: 150px;
+        padding-top: 15px;
+    }
+    
+    .footer-main{
+        p{
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            text-transform: uppercase;
+            font-size: 40px;
+            font-family: NeoSans_medium_italic;
+            color: white;
+            @include md {
+                font-size: 35px;
+            }
+            @include sm {
+                font-size:  28px;
+            }
+            @include xs {
+                font-size:  24px;
+            }
+            @include xxs {
+                font-size:  20px;
+            }
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            a{
+                height: 74px;
+                width: 74px;
+                padding: 10px;
+
+                @include md {
+                    height: 56px;
+                    width: 56px;
+                }
+
+                @include sm {
+                    height: 46px;
+                    width: 46px;
+                }
+                @include xs {
+                    height: 28px;
+                    width: 28px;
+                }
+
+                @include xxs {
+                    height: 28px;
+                    width: 28px;
+                }
+
+                img{
+                    height: 56px;
+                    width: 56px;
+                    @include md {
+                        height: 46px;
+                        width: 46px;
+                    }
+
+                    @include sm {
+                        height: 38px;
+                        width: 38px;
+                    }
+
+                    @include xs {
+                        height: 28px;
+                        width: 28px;
+                    }
+
+                    @include xxs {
+                        height: 28px;
+                        width: 28px;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-bottom{
+        color: white;
+        margin-top: 50px;
+        line-height: 50%;
+        @include md {
+            font-size: 0.75em;
+        }
+        @include sm{
+            font-size: 0.6em;
+        }
+        @include xs {
+            line-height: 10%;
+            font-size: 0.6em;
+        }
+
+        @include xxs {
+            line-height: 10%;
+            font-size: 0.6em;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
