@@ -5,17 +5,17 @@ $secondary-color : #27BAFE;
 
 @font-face {
     font-family: NeoSans_medium_italic;
-    src: url(/fonts/NeoSans_Medium_Italic.otf);
+    src: url(../fonts/NeoSans_Medium_Italic.otf);
 }
 
 @font-face {
     font-family: NeoSans_medium_regular;
-    src: url(/fonts/Neo_Sans_Std_Regular.otf);
+    src: url(../fonts/Neo_Sans_Std_Regular.otf);
 }
 
 @font-face {
     font-family: NeoSans_medium_bold;
-    src: url(/fonts/Neo_Sans_Std_Bold.otf);
+    src: url(../fonts/Neo_Sans_Std_Bold.otf);
 }
 
 header{
@@ -735,7 +735,7 @@ main{
                     max-width: 450px;
                 }
                 @include xs {
-                    max-width: 350px;
+                    max-width: 300px;
                 }
                 @include xxs {
                     max-width: 300px;
