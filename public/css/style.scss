@@ -435,17 +435,17 @@ main{
             img{
                 width: 80%;
                 height: 80%;
-                content:url("/images/Mask Group-3@2x.png");
+                content:url("../images/Mask Group-3@2x.png");
                 @include xs {
                     width: 100%;
                     height: 100%;
-                    content:url("/images/Image-3.jpg");
+                    content:url("../images/Image-3.jpg");
                 }
                 @include xxs {
                     font-size:  0.75em;
                     width: 100%;
                     height: 100%;
-                    content:url("/images/Image-3.jpg");
+                    content:url("../images/Image-3.jpg");
                 }
             }
             
