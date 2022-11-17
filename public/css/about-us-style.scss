@@ -647,9 +647,13 @@ footer{
             line-height: 10%;
             font-size: 0.6em;
         }
-        a{
-            text-decoration: none;
-            color: white;
+        .credit{
+            font-size: 0.9em;            
+
+            a{
+                text-decoration: none;
+                color: white;
+            }
         }
     }
 }

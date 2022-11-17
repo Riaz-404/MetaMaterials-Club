@@ -714,7 +714,10 @@ footer .footer-bottom {
     font-size: 0.6em;
   }
 }
-footer .footer-bottom a {
+footer .footer-bottom .credit {
+  font-size: 0.9em;
+}
+footer .footer-bottom .credit a {
   text-decoration: none;
   color: white;
 }/*# sourceMappingURL=about-us-style.css.map */
