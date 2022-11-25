@@ -8,6 +8,8 @@
 
 const sidebar = document.querySelector('#sidebar');
 const sidebarToggler = document.querySelector('.sidebar_toggler');
+const scrollArrow = document.getElementById('scroll-down');
+const bannerSection = document.getElementById('body');
 
 
 // Toggling the Sidebar
@@ -22,3 +24,14 @@ window.addEventListener('click', (e) => {
         sidebar.classList.remove('show');
     }
 });
+
+window.addEventListener('scroll', e => {
+
+    console.log(window.scrollY);
+    if(window.scrollY >= 100){
+        scrollArrow.style.visibility = "hidden";
+    }
+    else{
+        scrollArrow.style.visibility = "visible";
+    }
+})

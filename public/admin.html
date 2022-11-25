@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin - MetaMaterials Club of KUET</title>
+	<link rel="shortcut icon" href="images/club logo for web@2x.png" type="image/x-icon">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/admin.css">
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<section class="login">
+		<div class="login_box">
+			<div id="left" class="left">
+				<div class="contact">
+
+					<form id="login-form" action="">
+						<h3>LOG IN</h3>
+						<input id="email" type="email" placeholder="Email Address" required />
+						<input id="password" type="password" placeholder="Password" required />
+						<button id="login-submit-button" class="submit">LOG IN</button>
+						<div id="login-loader" class="loader-div">
+							<div class="loader"></div>
+						</div>
+
+					</form>
+
+
+					<div id="welcome-text">
+						<p>Welcome!</p>
+						<button id="logout-button" class="submit">LOG OUT</button>
+					</div>
+
+
+				</div>
+
+
+			</div>
+			<div id="right" class="right">
+				<div id="right-top" class="right-top">
+					<div class="right-text">
+						<h2>MetaMaterials <br> Club of KUET</h2>
+					</div>
+				</div>
+
+				<div id="right-bottom" class="right-bottom">
+					<h1>Events Management Form</h1>
+
+					<form id="event-form">
+						<div class="field">
+							<label for="title">Event Title</label>
+							<input id="title-input" type="text" name="title" required />
+						</div>
+						<div class="field">
+							<label for="date">Event Date</label>
+							<input id="date-input" type="date" name="date" required />
+						</div>
+						<div class="field">
+							<label for="link">Event Facebook Link</label>
+							<input id="link-input" type="text" name="link" required />
+						</div>
+						<div class="field">
+							<label for="image">Event Banner Image</label>
+							<input id="image-input" type="file" accept="image/*" name="image" required />
+						</div>
+
+						<button id="event-submit" type="submit">Submit</button>
+						<div id="event-loader" class="loader-div">
+							<div class="loader"></div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<script type="module" src="./js/admin.js"></script>
+
+</body>
+
+</html>

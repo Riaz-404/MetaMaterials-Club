@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - MetaMaterials Club of KUET</title>
+    <link rel="shortcut icon" href="../images/club logo for web@2x.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/events-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="#">
+                <embed src="../images/club logo.svg" alt="club logo" srcset="">
+            </a>
+        </div>
+        
+        
+        <nav id="navbar">
+            <ul>
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="./about-us.html">About Us</a>
+                </li>
+                <li class="active">
+                    <a href="#">Gallery</a>
+                </li>
+                <li>
+                    <a href="./events.html">Events</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!--====== Sidebar ======-->
+        <aside id="sidebar">
+            <div class="sidebar_content sidebar_body">
+                <nav class="side_navlinks">
+                    <ul>
+                        <li>
+                            <a href="../index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="./about-us.html">About Us</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="./gallery.html">Events</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!--== Sidebar-Toggler ==-->
+        <div class="sidebar_toggler">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </header>
+
+    <main class="container">
+        <div class="events-section">
+            <h1 class="events-title">Gallery</h1>
+
+            <div class="upcoming-events py-2">
+                <h1 class="title">Upcoming Events</h1>
+
+                <div id="upcoming-no-events" class="no-event">
+                    <p>No upcoming events</p>
+                </div>
+
+                <div id="upcoming-events" class="events row">
+                    <div class="event row col-sm-6">
+                        <div class="event-time col-sm-3 animated-background">
+                            <div class="time">
+
+                            </div>
+                        </div>
+                        <div class="event-details col-sm-9">
+                            <a href="#">
+                                <p class="animated-background" style="height: 280px;"></p>
+                                <p class="caption animated-background" style="height: 50px;"></p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="event row col-sm-6">
+                        <div class="event-time col-sm-3 animated-background">
+                            <div class="time">
+
+                            </div>
+                        </div>
+                        <div class="event-details col-sm-9">
+                            <a href="#">
+                                <p class="animated-background" style="height: 280px;"></p>
+                                <p class="caption animated-background" style="height: 50px;"></p>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="past-events py-2">
+                <h1 class="title">Past Events</h1>
+
+                <div id="past-events" class="events row">
+                    <div class="event row col-sm-6">
+                        <div class="event-time col-sm-3 animated-background">
+                            <div class="time">
+
+                            </div>
+                        </div>
+                        <div class="event-details col-sm-9">
+                            <a href="#">
+                                <p class="animated-background" style="height: 280px;"></p>
+                                <p class="caption animated-background" style="height: 50px;"></p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="event row col-sm-6">
+                        <div class="event-time col-sm-3 animated-background">
+                            <div class="time">
+
+                            </div>
+                        </div>
+                        <div class="event-details col-sm-9">
+                            <a href="#">
+                                <p class="animated-background" style="height: 280px;"></p>
+                                <p class="caption animated-background" style="height: 50px;"></p>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <p>Contact Us</p>
+                <ul>
+                    <li><a href="tel:+4733378901"><img src="../images/phone-call.png" style="padding: 2px;"/></a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/profile.php?id=100085646020078"><img
+                                src="https://img.icons8.com/fluency/48/000000/facebook-new.png" /></a></li>
+                    <li><a target="_blank" href="https://twitter.com/?lang=en"><img
+                                src="https://img.icons8.com/color/48/000000/twitter--v1.png" /></a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/"><img
+                                src="https://img.icons8.com/fluency/48/000000/instagram-new.png" /></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/"><img
+                                src="https://img.icons8.com/color/48/000000/linkedin.png" /></a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/"><img
+                                src="https://img.icons8.com/color/48/null/youtube-play.png" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <p>
+                            &copy;
+                            <script>document.write(new Date().getFullYear())</script> All copyright rights reserved by
+                            the authority
+                        </p>
+                    </div>
+                    <div>
+                        <p class="credit">
+                            Developed by <a target="_blank" href="https://github.com/Riaz-404"><span>Md. Riazul Islam</span></a> & Designed by <a target="_blank" href="https://www.facebook.com/shams1080"><span>S M Shamsuddoha</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script type="module" src="../js/events.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

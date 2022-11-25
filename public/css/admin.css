@@ -1,0 +1,381 @@
+@font-face {
+  font-family: NeoSans_medium_italic;
+  src: url(../fonts/NeoSans_Medium_Italic.otf);
+}
+@font-face {
+  font-family: NeoSans_medium_bold;
+  src: url(../fonts/Neo_Sans_Std_Bold.otf);
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+img {
+  width: 100%;
+}
+
+.login {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(#193652, #0c1b28);
+  position: relative;
+}
+
+.login_box {
+  width: 1050px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 4px 22px -8px rgba(0, 0, 0, 0.2666666667);
+  display: flex;
+  overflow: hidden;
+}
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .login_box {
+    width: 850px;
+    height: 480px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .login_box {
+    width: 650px;
+    height: 420px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 599px) {
+  .login_box {
+    width: 400px;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 399px) {
+  .login_box {
+    width: 355px;
+    height: 380px;
+  }
+}
+
+.login_box .left {
+  width: 35%;
+  height: 100%;
+  padding: 25px 20px;
+}
+
+@media screen and (max-width: 599px) {
+  #left {
+    width: 100%;
+  }
+}
+
+.login_box .right {
+  width: 65%;
+  height: 100%;
+}
+
+@media screen and (max-width: 599px) {
+  #right {
+    display: none;
+    width: 100%;
+  }
+}
+
+.left .contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  height: 100%;
+  width: 73%;
+  margin: auto;
+}
+
+.left .contact form {
+  display: block;
+}
+
+#login-form {
+  display: block;
+}
+
+.left .contact #welcome-text {
+  display: none;
+  font-family: "NeoSans_medium_bold";
+  font-size: 40px;
+  text-align: center;
+}
+.left .contact #welcome-text button {
+  display: block;
+  padding: 10px 40px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+  margin: auto;
+  margin-top: 10px;
+  background: #193652;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0px 9px 15px -11px rgb(88, 54, 114);
+}
+
+.left h3 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #193652;
+  font-size: 40px;
+  font-family: NeoSans_medium_italic;
+}
+
+.left input {
+  border: none;
+  margin: 15px 0px;
+  border-bottom: 1px solid rgba(79, 48, 103, 0.4901960784);
+  padding: 7px 9px;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+.left {
+  background: linear-gradient(-45deg, #dcd7e0, #fff);
+}
+
+#login-submit-button {
+  display: block;
+}
+
+.submit {
+  padding: 10px 40px;
+  border-radius: 8px;
+  border: none;
+  margin: auto;
+  margin-top: 10px;
+  background: #193652;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0px 9px 15px -11px rgb(88, 54, 114);
+}
+
+.loader-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#login-loader {
+  display: none;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #193652;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+#right-top {
+  display: block;
+}
+
+.right .right-top {
+  background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%), url(https://static.seattletimes.com/wp-content/uploads/2019/01/web-typing-ergonomics-1020x680.jpg);
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  height: 100%;
+}
+
+.right .right-text {
+  height: 100%;
+  position: relative;
+  transform: translate(0%, 45%);
+}
+
+.right-text h2 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: NeoSans_medium_italic;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.right-text h5 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.right .right-inductor {
+  position: absolute;
+  width: 70px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0);
+  left: 50%;
+  bottom: 70px;
+  transform: translate(-50%, 0%);
+}
+
+#right-bottom {
+  display: none;
+}
+
+.right-bottom {
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.right-bottom h1 {
+  padding: 20px;
+  text-transform: uppercase;
+  font-size: 40px;
+  font-family: NeoSans_medium_italic;
+  color: #193652;
+}
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .right-bottom h1 {
+    font-size: 35px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .right-bottom h1 {
+    font-size: 28px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 599px) {
+  .right-bottom h1 {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 399px) {
+  .right-bottom h1 {
+    font-size: 20px;
+  }
+}
+.right-bottom form {
+  width: 100%;
+  padding: 0 30px;
+  font-family: "Roboto", sans-serif;
+}
+.right-bottom form .field {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  padding: 10px 0;
+}
+.right-bottom form .field label {
+  font-size: 1em;
+}
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .right-bottom form .field label {
+    font-size: 0.9em;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .right-bottom form .field label {
+    font-size: 0.8em;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 599px) {
+  .right-bottom form .field label {
+    font-size: 0.75em;
+  }
+}
+@media screen and (max-width: 399px) {
+  .right-bottom form .field label {
+    font-size: 0.7em;
+  }
+}
+.right-bottom form .field input {
+  border: none;
+  border-bottom: 1px solid rgba(79, 48, 103, 0.4901960784);
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .right-bottom form .field input {
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .right-bottom form .field input {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 599px) {
+  .right-bottom form .field input {
+    font-size: 12.5px;
+  }
+}
+@media screen and (max-width: 399px) {
+  .right-bottom form .field input {
+    font-size: 11px;
+  }
+}
+.right-bottom form .field #image-input {
+  border: none;
+}
+.right-bottom form button {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
+  background: #193652;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0px 9px 15px -11px rgb(88, 54, 114);
+}
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .right-bottom form button {
+    font-size: 0.9em;
+    padding: 8px 20px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .right-bottom form button {
+    padding: 8px 20px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 599px) {
+  .right-bottom form button {
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+}
+@media screen and (max-width: 399px) {
+  .right-bottom form button {
+    font-size: 13px;
+    padding: 5px 15px;
+  }
+}
+.right-bottom form #event-loader {
+  display: none;
+  margin-top: 10px;
+}/*# sourceMappingURL=admin.css.map */
